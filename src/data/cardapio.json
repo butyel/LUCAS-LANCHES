@@ -1,0 +1,112 @@
+[
+  {
+    "id": "burger-classico",
+    "categoria": "burgers",
+    "categoriaNome": "Burgers",
+    "nome": "Classic Lucas",
+    "descricao": "Pão brioche, burger 160g, queijo prato, alface, tomate e molho da casa.",
+    "preco": 26.9,
+    "precoPromo": null,
+    "imagem": "/images/burgers/classic-lucas.svg",
+    "destaque": true
+  },
+  {
+    "id": "burger-smash",
+    "categoria": "burgers",
+    "categoriaNome": "Burgers",
+    "nome": "Smash Duplo",
+    "descricao": "Dois smash burgers 90g, cheddar cremoso, cebola caramelizada e maionese defumada.",
+    "preco": 29.9,
+    "precoPromo": null,
+    "imagem": "/images/burgers/smash-duplo.svg",
+    "destaque": true
+  },
+  {
+    "id": "burger-bacon",
+    "categoria": "burgers",
+    "categoriaNome": "Burgers",
+    "nome": "Bacon Explosion",
+    "descricao": "Burger 180g, muito bacon, cheddar e molho barbecue de mel.",
+    "preco": 32.9,
+    "precoPromo": 27.9,
+    "imagem": "/images/burgers/bacon-explosion.svg",
+    "destaque": true
+  },
+  {
+    "id": "burger-veggie",
+    "categoria": "burgers",
+    "categoriaNome": "Burgers",
+    "nome": "Veggie Garden",
+    "descricao": "Burger de grão-de-bico, queijo derretido, rúcula e tomate confit.",
+    "preco": 28.9,
+    "precoPromo": null,
+    "imagem": "/images/burgers/veggie-garden.svg",
+    "destaque": false
+  },
+  {
+    "id": "combo-duplo",
+    "categoria": "combos",
+    "categoriaNome": "Combos",
+    "nome": "Combo Duplo Lucas",
+    "descricao": "2 burgers Classic, 1 batata média e 2 refrigerantes lata.",
+    "preco": 59.9,
+    "precoPromo": 49.9,
+    "imagem": "/images/combos/combo-duplo.svg",
+    "destaque": true
+  },
+  {
+    "id": "combo-familia",
+    "categoria": "combos",
+    "categoriaNome": "Combos",
+    "nome": "Combo Família",
+    "descricao": "4 burgers, 2 porções grandes e 4 refrigerantes.",
+    "preco": 119.9,
+    "precoPromo": 99.9,
+    "imagem": "/images/combos/combo-familia.svg",
+    "destaque": true
+  },
+  {
+    "id": "porcao-fritas",
+    "categoria": "porcoes",
+    "categoriaNome": "Porções",
+    "nome": "Batata Frita",
+    "descricao": "Porção de batata frita crocante com sal e orégano.",
+    "preco": 16.9,
+    "precoPromo": null,
+    "imagem": "/images/porcoes/fritas.svg",
+    "destaque": false
+  },
+  {
+    "id": "porcao-cheddar",
+    "categoria": "porcoes",
+    "categoriaNome": "Porções",
+    "nome": "Batata com Cheddar e Bacon",
+    "descricao": "Batata frita coberta com cheddar cremoso e pedaços de bacon.",
+    "preco": 24.9,
+    "precoPromo": 21.9,
+    "imagem": "/images/porcoes/cheddar-bacon.svg",
+    "destaque": true
+  },
+  {
+    "id": "bebida-cola",
+    "categoria": "bebidas",
+    "categoriaNome": "Bebidas",
+    "nome": "Refrigerante Lata 350ml",
+    "descricao": "Coca-cola, Guaraná ou Fanta, bem gelado.",
+    "preco": 6.9,
+    "precoPromo": null,
+    "imagem": "/images/bebidas/refri.svg",
+    "destaque": false
+  },
+  {
+    "id": "sobremesa-milkshake",
+    "categoria": "sobremesas",
+    "categoriaNome": "Sobremesas",
+    "nome": "Milkshake de Chocolate",
+    "descricao": "Milkshake cremoso com calda de chocolate e chantilly.",
+    "preco": 18.9,
+    "precoPromo": null,
+    "imagem": "/images/sobremesas/milkshake.svg",
+    "destaque": false
+  }
+]

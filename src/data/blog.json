@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "como-montar-o-burger-perfeito",
+    "titulo": "Como montar o burger perfeito em casa",
+    "data": "2026-03-20",
+    "imagem": "/images/blog/burger-casa.svg",
+    "resumo": "Dicas práticas para escolher o pão, o queijo e o ponto da carne e chegar no sabor de lanchonete.",
+    "conteudo": [
+      "Montar um hambúrguer delicioso em casa é mais simples do que parece. O segredo está em três pilares: ingredientes, ponto da carne e montagem.",
+      "Escolha um pão de brioche fresco e leve conserve na tosta. Para a carne, prefira um blend de acém e peito com 20% de gordura, que garante suculência.",
+      "O ponto ideal é o mal passado: cerca de 3 a 4 minutos de cada lado na chapa alta, sem apertar demais o burger para não perder os sucos.",
+      "Finalize com queijo derretendo por cima, uma boa maionese artesanal e ingredientes frescos. Está pronto um burger digno de lanchonete."
+    ]
+  },
+  {
+    "slug": "por-que-a-batata-frita-fica-crocante",
+    "titulo": "Por que a batata frita fica crocante (e a receita)",
+    "data": "2026-02-10",
+    "imagem": "/images/blog/batata-crocante.svg",
+    "conteudo": [
+      "O segredo da batata frita crocante por fora e macia por dentro é o chamado banho duplo: frite primeiro em óleo a 150 graus e depois em 180 graus.",
+      "Antes de fritar, deixe a batata de molho em água gelada para remover o excesso de amido, e seque bem.",
+      "Depois do segundo frite, escorra e tempere ainda quente. Se adicionar uma pitada de farinha de mandioca, a crocância vai durar bem mais."
+    ]
+  },
+  {
+    "slug": "conheca-a-historia-da-lucas-lanches",
+    "titulo": "Conheça a história da Lucas Lanches",
+    "data": "2026-01-05",
+    "imagem": "/images/blog/historia.svg",
+    "conteudo": [
+      "Tudo começou na cozinha da nossa família, com uma chapa na garagem e a vontade de levar um lanche de verdade para o bairro de Presidente Epitácio.",
+      "O nome vem do fundador, que assinava cada hambúrguer como quem assina um pedido. O mesmo prazer em acolher bem a cada pedido segue até hoje.",
+      "Hoje entregamos em toda a cidade com entrega rápida e ingredientes frescos, mas o coração continua o mesmo: sabor de casa."
+    ]
+  }
+]

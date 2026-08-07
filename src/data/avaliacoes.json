@@ -1,0 +1,30 @@
+{
+  "notaMedia": 4.8,
+  "total": "1,2 mil",
+  "avaliacoes": [
+    {
+      "id": "av1",
+      "nome": "Mariana Souza",
+      "nota": 5,
+      "comentario": "O Smash Duplo é de longe o melhor hambúrguer da nossa cidade. Chegou quente e rápido!"
+    },
+    {
+      "id": "av2",
+      "nome": "José Carlos",
+      "nota": 5,
+      "comentario": "Atendimento pelo WhatsApp é super ágil. Virou meu delivery favorito pra sexta à noite."
+    },
+    {
+      "id": "av3",
+      "nome": "Aline Ferreira",
+      "nota": 4,
+      "comentario": "Batatas com cheddar e bacon são incríveis. Só queria que a entrega fosse um pouco mais rápida."
+    },
+    {
+      "id": "av4",
+      "nome": "Pedro Almeida",
+      "nota": 5,
+      "comentario": "Combo família é show. Todo mundo comeu e ainda sobrou. Melhor custo-benefício."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#E5E5E5"/>
+  <circle cx="600" cy="315" r="250" fill="#FFFFFF" stroke="#E8291E" stroke-width="6"/>
+  <text x="600" y="300" font-family="Kaushan Script, cursive" font-size="120" fill="#E8291E" text-anchor="middle">Lucas</text>
+  <text x="600" y="410" font-family="Bebas Neue, sans-serif" font-size="90" letter-spacing="14" fill="#2F4A1E" text-anchor="middle">LANCHES</text>
+  <text x="600" y="490" font-family="Arial, sans-serif" font-size="36" fill="#1A1A1A" text-anchor="middle">Delivery de hamburguer artesanal</text>
+</svg>

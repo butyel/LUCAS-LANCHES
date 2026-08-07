@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img">
+  <title>historia</title>
+  <rect width="800" height="600" fill="#E5E5E5"/>
+  <circle cx="400" cy="285" r="195" fill="#FFFFFF" stroke="#E8291E" stroke-width="4"/><circle cx="400" cy="285" r="160" fill="none" stroke="#E8291E" stroke-width="3" stroke-dasharray="10 12"/>
+  <rect x="230" y="230" width="340" height="170" rx="10" fill="#2F4A1E"/><path d="M250 230 L400 140 L550 230 Z" fill="#3d5c2c"/><rect x="360" y="300" width="80" height="100" rx="6" fill="#E5E5E5"/><rect x="250" y="275" width="70" height="50" fill="#1A1A1A"/>
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#2F4A1E" text-anchor="middle">historia</text>
+</svg>

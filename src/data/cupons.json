@@ -1,0 +1,29 @@
+[
+  {
+    "id": "cupom-bemvindo",
+    "codigo": "BEMVINDO10",
+    "titulo": "10% na primeira compra",
+    "descricao": "Aplicado automaticamente no primeiro pedido feito pelo WhatsApp.",
+    "validade": "Válido até 31/12/2026",
+    "condicao": "Válido para pedidos acima de R$ 30,00",
+    "ativo": true
+  },
+  {
+    "id": "cupom-frete",
+    "codigo": "FRETEGRATIS",
+    "titulo": "Entrega grátis",
+    "descricao": "Frete grátis para pedidos a partir de R$ 79,00.",
+    "validade": "Válido até 31/12/2026",
+    "condicao": "Pedido mínimo de R$ 79,00",
+    "ativo": true
+  },
+  {
+    "id": "cupom-combo",
+    "codigo": "COMBO49",
+    "titulo": "Combo Duplo por R$ 49,90",
+    "descricao": "Combo Duplo Lucas com preço especial para pedidos online.",
+    "validade": "Válido até 30/11/2026",
+    "condicao": "Somente pedidos pelo WhatsApp",
+    "ativo": true
+  }
+]
