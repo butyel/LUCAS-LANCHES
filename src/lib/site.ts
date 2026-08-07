@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Lucas Lanches",
   brandFull: "Lucas Lanches",
   tagline: "Hambúrgueres artesanais que trazem aquele sabor de casa.",
-  url: "https://www.lucaslanches.com.br",
+  url: "https://lucas-lanches.vercel.app",
   whatsapp: "5518997861957",
   whatsappDisplay: "(18) 99786-1957",
   phoneDisplay: "(18) 99786-1957",
