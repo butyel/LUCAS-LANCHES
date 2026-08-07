@@ -78,7 +78,7 @@ export default function Hero() {
 
         <div className="order-1 flex justify-center lg:order-2">
           <Image
-            src="/images/home.png"
+            src="/images/home.jpg"
             alt={`Hambúrguer artesanal da ${siteConfig.name}`}
             width={1000}
             height={700}
