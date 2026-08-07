@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import OrderBar from "@/components/OrderBar";
+import AppProviders from "@/components/AppProviders";
 import RestaurantJsonLd from "@/components/RestaurantJsonLd";
 import "./globals.css";
 
@@ -104,11 +105,18 @@ export default function RootLayout({
         >
           Pular para o conteúdo
         </a>
-        <Header />
-        <RestaurantJsonLd />
-        <main id="conteudo">{children}</main>
-        <Footer />
-        <OrderBar />
+        <AppProviders>
+          <Header />
+          <RestaurantJsonLd />
+          <main id="conteudo">{children}</main>
+          <Footer />
+          <OrderBar />
+          {/* Espaço para a bottom navigation mobile */}
+          <div
+            aria-hidden="true"
+            className="h-[calc(56px+env(safe-area-inset-bottom))] md:hidden"
+          />
+        </AppProviders>
       </body>
     </html>
   );

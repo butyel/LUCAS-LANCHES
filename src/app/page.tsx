@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import PromoBanner from "@/components/PromoBanner";
+import CardapioPreview from "@/components/CardapioPreview";
 import FeaturedMenu from "@/components/FeaturedMenu";
 import CombosSection from "@/components/CombosSection";
-import Benefits from "@/components/Benefits";
-import AboutSection from "@/components/AboutSection";
+import MidCta from "@/components/MidCta";
+import TrustSection from "@/components/TrustSection";
 import Location from "@/components/Location";
-import Cupons from "@/components/Cupons";
-import Avaliacoes from "@/components/Avaliacoes";
 import Faq from "@/components/Faq";
-import FinalCta from "@/components/FinalCta";
 import Blog from "@/components/Blog";
-import CardapioPreview from "@/components/CardapioPreview";
+import FinalCta from "@/components/FinalCta";
 
 export const metadata: Metadata = {
   title: "Lucas Lanches em Presidente Epitácio | Lanches e Delivery",
@@ -26,14 +23,11 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <PromoBanner />
       <CardapioPreview />
       <FeaturedMenu />
       <CombosSection />
-      <Benefits />
-      <AboutSection />
-      <Cupons />
-      <Avaliacoes />
+      <MidCta />
+      <TrustSection />
       <Location />
       <Faq />
       <Blog />

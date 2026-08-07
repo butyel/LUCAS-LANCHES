@@ -2,11 +2,20 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
-import { whatsappLink, siteConfig } from "@/lib/site";
-import { IconClose, IconMenu, IconWhatsApp, IconTruck } from "./icons";
+import { siteConfig } from "@/lib/site";
+import { useCart } from "@/context/CartProvider";
+import { useUI } from "@/context/UIProvider";
+import {
+  IconClose,
+  IconMenu,
+  IconWhatsApp,
+  IconTruck,
+  IconSearch,
+  IconBag,
+} from "./icons";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -20,13 +29,16 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
+  const { state } = useCart();
+  const { openCart, openSearch } = useUI();
 
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,6 +51,11 @@ export default function Header() {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
+
+  const handleOrderCta = () => {
+    if (state.count > 0) openCart();
+    else router.push("/cardapio#top-seven");
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -62,26 +79,22 @@ export default function Header() {
       <div
         className={cn(
           "transition-all duration-300",
-          scrolled
-            ? "bg-white/95 shadow-header backdrop-blur"
-            : "bg-brand-cream/90 backdrop-blur"
+          scrolled ? "bg-white/95 shadow-header backdrop-blur" : "bg-brand-cream/90 backdrop-blur"
         )}
       >
         <div
           className={cn(
-            "container-site flex items-center justify-between gap-4 transition-all duration-300",
-            scrolled ? "h-16" : "h-20"
+            "container-site flex items-center justify-between gap-3 transition-all duration-300",
+            scrolled ? "h-14" : "h-16 sm:h-20"
           )}
         >
-          <Logo scrolled={scrolled} />
+          <Logo scrolled={scrolled} compact={scrolled} />
 
           <nav aria-label="Menu principal" className="hidden lg:block">
-            <ul className="flex items-center gap-8">
+            <ul className="flex items-center gap-7">
               {navLinks.map((link) => {
                 const active =
-                  link.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(link.href);
+                  link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
                 return (
                   <li key={link.href}>
                     <Link
@@ -101,18 +114,39 @@ export default function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-red px-5 py-2.5 text-sm sm:px-6"
-              aria-label="Fazer pedido pelo WhatsApp em nova aba"
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={openSearch}
+              aria-label="Buscar no cardápio"
+              className="hidden h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-white text-brand-ink transition-colors hover:bg-brand-sand sm:flex"
+            >
+              <IconSearch className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={openCart}
+              aria-label={`Abrir pedido (${state.count} itens)`}
+              className="relative flex h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-white text-brand-ink transition-colors hover:bg-brand-sand"
+            >
+              <IconBag className="h-5 w-5" />
+              {state.count > 0 && (
+                <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-red px-1 text-[11px] font-bold text-white">
+                  {state.count}
+                </span>
+              )}
+            </button>
+
+            <button
+              type="button"
+              onClick={handleOrderCta}
+              className="btn-red px-4 py-2.5 text-sm sm:px-5"
+              aria-label={state.count > 0 ? "Ver pedido" : "Fazer pedido"}
             >
               <IconWhatsApp className="h-5 w-5" />
-              <span className="hidden sm:inline">Pedir agora</span>
-              <span className="sm:hidden">Pedir</span>
-            </a>
+              <span className="sm:inline">{state.count > 0 ? "Ver pedido" : "Pedir"}</span>
+            </button>
 
             <button
               type="button"
@@ -122,16 +156,13 @@ export default function Header() {
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
               className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-white text-brand-ink transition-colors hover:bg-brand-sand lg:hidden"
             >
-              {menuOpen ? (
-                <IconClose className="h-5 w-5" />
-              ) : (
-                <IconMenu className="h-5 w-5" />
-              )}
+              {menuOpen ? <IconClose className="h-5 w-5" /> : <IconMenu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
+      {/* Menu móvel */}
       <div
         id="menu-mobile"
         className={cn(
@@ -178,9 +209,8 @@ export default function Header() {
                     }
                     className={cn(
                       "block rounded-xl px-4 py-3 text-xl font-bold uppercase tracking-wide text-brand-ink transition-colors hover:bg-brand-sand hover:text-brand-red",
-                      (link.href === "/"
-                        ? pathname === "/"
-                        : pathname.startsWith(link.href)) && "text-brand-red"
+                      (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)) &&
+                        "text-brand-red"
                     )}
                   >
                     {link.label}
@@ -190,19 +220,17 @@ export default function Header() {
             </ul>
           </nav>
           <div className="space-y-2 border-t border-brand-line p-5">
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                openCart();
+              }}
               className="btn-red w-full py-3 text-base"
-              aria-label="Pedir pelo WhatsApp em nova aba"
             >
-              <IconWhatsApp className="h-5 w-5" /> Pedir agora
-            </a>
-            <a
-              href={`tel:+${siteConfig.whatsapp}`}
-              className="btn-outline w-full py-3 text-base"
-            >
+              <IconWhatsApp className="h-5 w-5" /> Ver pedido
+            </button>
+            <a href={`tel:+${siteConfig.whatsapp}`} className="btn-outline w-full py-3 text-base">
               Ligar: {siteConfig.whatsappDisplay}
             </a>
           </div>

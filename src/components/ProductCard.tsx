@@ -29,13 +29,7 @@ function PriceDisplay({ item }: { item: MenuItem }) {
   if (item.options?.length) {
     const min = basePrice(item);
     const max = maxPrice(item);
-    if (max > min) {
-      return (
-        <span className="price">
-          {formatPrice(min)} - {formatPrice(max)}
-        </span>
-      );
-    }
+    if (max > min) return <span className="price">{formatPrice(min)} – {formatPrice(max)}</span>;
     return <span className="price">{formatPrice(min)}</span>;
   }
   return <span className="price">{formatPrice(basePrice(item))}</span>;
@@ -52,7 +46,7 @@ export default function ProductCard({
   return (
     <article
       className={cn(
-        "group flex flex-col overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-brand-line transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover",
+        "group relative flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-brand-line transition-all duration-300 hover:-translate-y-1 hover:shadow-cardHover",
         className
       )}
     >
@@ -78,30 +72,28 @@ export default function ProductCard({
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           loading={eager ? "eager" : "lazy"}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
         />
       </button>
 
       <div className="flex flex-1 flex-col p-4 sm:p-5">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-xl font-bold uppercase leading-none tracking-tight text-brand-ink">
-            {item.nome}
-          </h3>
-        </div>
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-ink/65">
+        <h3 className="text-lg font-bold uppercase leading-tight tracking-tight text-brand-ink">
+          {item.nome}
+        </h3>
+        <p className="mt-1.5 line-clamp-2 flex-1 text-sm leading-relaxed text-brand-ink/65">
           {item.descricao}
         </p>
 
-        <div className="mt-4 flex items-center justify-between gap-3 border-t border-brand-line pt-4">
+        <div className="mt-4 flex items-center justify-between gap-3 border-t border-brand-line pt-3.5">
           <PriceDisplay item={item} />
           <button
             type="button"
             onClick={() => onSelect(item)}
-            className="btn-red px-4 py-2.5 text-xs"
+            className="flex h-11 min-w-11 items-center justify-center rounded-full bg-brand-red text-white shadow-cta transition-transform hover:bg-brand-redDark active:scale-90"
             aria-label={`Pedir ${item.nome}`}
+            title={`Pedir ${item.nome}`}
           >
-            <span className="sm:hidden">Pedir</span>
-            <IconPlus className="mx-1 h-4 w-4" />
+            <IconPlus className="h-5 w-5" />
           </button>
         </div>
       </div>

@@ -4,16 +4,17 @@ import { cn } from "@/lib/utils";
 type LogoProps = {
   className?: string;
   scrolled?: boolean;
+  compact?: boolean;
 };
 
-export default function Logo({ className, scrolled }: LogoProps) {
+export default function Logo({ className, scrolled, compact }: LogoProps) {
   return (
     <Link
       href="/"
       aria-label="Lucas Lanches - Início"
       className={cn(
         "group inline-flex flex-col leading-none transition-transform duration-300",
-        scrolled && "scale-90 origin-left",
+        (scrolled || compact) && "scale-90 origin-left",
         className
       )}
     >
