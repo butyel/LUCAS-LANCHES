@@ -6,7 +6,7 @@
     "nome": "Hot Dog Simples",
     "descricao": "2 salsichas, milho, batata palha, salada e molhos.",
     "preco": 12,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/hot-dog-simples.jpg",
     "destaque": false
   },
   {
@@ -16,7 +16,7 @@
     "nome": "Hot Dog Especial",
     "descricao": "2 salsichas, milho, batata palha, catupiry, bacon, calabresa e salada.",
     "preco": 19,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/hot-dog-especial.jpg",
     "destaque": false
   },
   {
@@ -26,7 +26,7 @@
     "nome": "Big Salada",
     "descricao": "2 hambúrgueres, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/big-salada.png",
     "destaque": false
   },
   {
@@ -36,7 +36,7 @@
     "nome": "Cheddar Burguer",
     "descricao": "2 hambúrgueres, cheddar e mussarela.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/cheddar-burguer.png",
     "destaque": false
   },
   {
@@ -46,7 +46,7 @@
     "nome": "Especial Cheddar",
     "descricao": "2 hambúrgueres, cheddar, mussarela e provolone.",
     "preco": 22,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/especial-cheddar.jpg",
     "destaque": false
   },
   {
@@ -56,7 +56,7 @@
     "nome": "X-Burguer",
     "descricao": "1 hambúrguer, presunto e mussarela.",
     "preco": 13,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-burguer.png",
     "destaque": false
   },
   {
@@ -66,7 +66,7 @@
     "nome": "X-Salada",
     "descricao": "1 hambúrguer, presunto, mussarela, milho, batata palha e salada.",
     "preco": 15,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-salada.png",
     "destaque": false
   },
   {
@@ -76,7 +76,7 @@
     "nome": "X-Bacon",
     "descricao": "1 hambúrguer, bacon, milho, batata palha, presunto, mussarela e salada.",
     "preco": 18,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-bacon.png",
     "destaque": false
   },
   {
@@ -86,7 +86,7 @@
     "nome": "X-Bacon Calabresa",
     "descricao": "1 hambúrguer, bacon, calabresa, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-bacon-calabresa.jpg",
     "destaque": false
   },
   {
@@ -96,7 +96,7 @@
     "nome": "X-Calabresa",
     "descricao": "1 hambúrguer, calabresa, milho, batata palha, presunto, mussarela e salada.",
     "preco": 18,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-calabresa.jpg",
     "destaque": false
   },
   {
@@ -106,7 +106,7 @@
     "nome": "X-Egg",
     "descricao": "1 hambúrguer, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
     "preco": 16,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-egg.jpg",
     "destaque": false
   },
   {
@@ -116,7 +116,7 @@
     "nome": "X-Frango",
     "descricao": "2 filés de frango, milho, batata palha, presunto, mussarela e salada.",
     "preco": 16,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-frango.png",
     "destaque": false
   },
   {
@@ -126,7 +126,7 @@
     "nome": "X-Frango Bacon",
     "descricao": "2 filés de frango, bacon, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-frango-bacon.png",
     "destaque": false
   },
   {
@@ -136,7 +136,7 @@
     "nome": "X-Frango Calabresa",
     "descricao": "2 filés de frango, calabresa, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-frango-calabresa.png",
     "destaque": false
   },
   {
@@ -146,7 +146,7 @@
     "nome": "X-Frango Egg",
     "descricao": "2 filés de frango, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
     "preco": 18,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-frango-egg.png",
     "destaque": false
   },
   {
@@ -156,7 +156,7 @@
     "nome": "X-Tudo",
     "descricao": "1 hambúrguer, 1 salsicha, bacon, calabresa, 1 filé de frango, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
     "preco": 26,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-tudo.png",
     "destaque": false
   },
   {
@@ -166,7 +166,7 @@
     "nome": "X-Bagunça",
     "descricao": "1 hambúrguer, 1 salsicha, bacon, calabresa, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
     "preco": 22,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-bagunca.jpg",
     "destaque": false
   },
   {
@@ -176,7 +176,7 @@
     "nome": "X-Filé",
     "descricao": "Filé bovino, mussarela e salada.",
     "preco": 27,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-file.png",
     "destaque": false
   },
   {
@@ -186,7 +186,7 @@
     "nome": "X-Filé Acebolado",
     "descricao": "Filé bovino, cebola, mussarela e salada.",
     "preco": 28,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-file-acebolado.png",
     "destaque": false
   },
 
@@ -318,7 +318,7 @@
     "nome": "X-Calabresa Egg",
     "descricao": "1 hambúrguer, calabresa, 1 ovo, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-calabresa-egg.png",
     "destaque": true
   },
   {
@@ -328,7 +328,7 @@
     "nome": "Lucca Supremo",
     "descricao": "1 hambúrguer, 1 filé de frango, calabresa, catupiry, presunto, mussarela, milho, batata palha e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/lucca-supremo.png",
     "destaque": true
   },
   {
@@ -338,7 +338,7 @@
     "nome": "X-Lucca",
     "descricao": "2 salsichas, calabresa, 1 ovo frito, presunto, mussarela, milho, batata palha e salada.",
     "preco": 19,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-lucca.png",
     "destaque": true
   },
   {
@@ -348,7 +348,7 @@
     "nome": "X-Egg Duplo",
     "descricao": "2 hambúrgueres, 2 ovos fritos, milho, batata palha, presunto, mussarela e salada.",
     "preco": 23,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-egg-duplo.png",
     "destaque": true
   },
   {
@@ -358,7 +358,7 @@
     "nome": "X-Bacon Egg",
     "descricao": "1 hambúrguer, bacon, 1 ovo, milho, batata palha, presunto, mussarela e salada.",
     "preco": 20,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-bacon-egg.png",
     "destaque": true
   },
   {
@@ -368,7 +368,7 @@
     "nome": "X Tudo Duo",
     "descricao": "1 hambúrguer, 1 salsicha, dobro de bacon, dobro de calabresa, 2 filés de frango, 2 ovos fritos, milho, batata palha, presunto, mussarela e salada.",
     "preco": 33,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/x-tudo-duo.png",
     "destaque": true
   },
   {
@@ -378,7 +378,7 @@
     "nome": "Mega Duo",
     "descricao": "2 hambúrgueres, 2 salsichas, bacon, calabresa, 2 filés de frango, 2 ovos fritos, 2 fatias de presunto, 2 fatias de mussarela, milho, batata palha e salada.",
     "preco": 45,
-    "imagem": "/images/menu-placeholder.svg",
+    "imagem": "/images/burgers/mega-duo.png",
     "destaque": true
   },
 

@@ -78,13 +78,13 @@ export default function Hero() {
 
         <div className="order-1 flex justify-center lg:order-2">
           <Image
-            src="/images/hero-burger.svg"
-            alt="Hambúrguer artesanal da Lucas Lanches"
-            width={640}
-            height={480}
+            src="/images/home.png"
+            alt={`Hambúrguer artesanal da ${siteConfig.name}`}
+            width={1000}
+            height={700}
             priority
             sizes="(max-width: 1024px) 100vw, 58vw"
-            className="h-auto w-full max-w-sm drop-shadow-[0_30px_40px_rgba(0,0,0,0.5)] sm:max-w-md lg:max-w-2xl"
+            className="h-auto w-full max-w-sm rounded-2xl object-cover shadow-[0_30px_40px_rgba(0,0,0,0.5)] sm:max-w-md lg:max-w-2xl"
           />
         </div>
       </div>
