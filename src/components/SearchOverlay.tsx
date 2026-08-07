@@ -74,17 +74,12 @@ export default function SearchOverlay({
   return (
     <div
       className={cn(
-        "fixed inset-0 z-[85] bg-brand-cream",
-        open ? "pointer-events-auto" : "pointer-events-none"
+        "fixed inset-0 z-[85] bg-brand-cream transition-opacity duration-200",
+        open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
       )}
       aria-hidden={!open}
     >
-      <div
-        className={cn(
-          "flex h-full w-full flex-col transition-opacity duration-200",
-          open ? "opacity-100" : "opacity-0"
-        )}
-      >
+      <div className="flex h-full w-full flex-col">
         <header className="sticky top-0 z-10 border-b border-brand-line bg-white px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.75rem)]">
           <div className="flex items-center gap-2">
             <button
