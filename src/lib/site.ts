@@ -3,10 +3,13 @@ export const siteConfig = {
   brandFull: "Lucas Lanches",
   tagline: "Hambúrgueres artesanais que trazem aquele sabor de casa.",
   url: "https://lucas-lanches-hamburgueria.vercel.app",
-  whatsapp: "5518997861957",
+  whatsapp: "18997861957",
   whatsappDisplay: "(18) 99786-1957",
   phoneDisplay: "(18) 99786-1957",
   email: "contato@lucaslanches.com.br",
+  city: "Presidente Epitácio",
+  state: "SP",
+  region: "Presidente Epitácio e região",
   address: {
     street: "Rua José Dirceu da Silva, 3-128",
     district: "Granjas Agrícolas Helvécio",
@@ -15,17 +18,26 @@ export const siteConfig = {
     cep: "19475-336",
   },
   hours: "Ter a Dom, das 18h às 23h",
+  opens: "18:00",
+  closes: "23:00",
   deliveryFreeAbove: 79,
   currency: "R$",
   social: {
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
-    whatsapp: `https://wa.me/5511999999999`,
   },
-};
+  rating: 4.8,
+  ratingCount: "1200",
+} as const;
 
-export const whatsappLink = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
-  "Olá! Vim pelo site da Lucas Lanches e quero fazer um pedido."
+const defaultText = encodeURIComponent(
+  `Olá! Vim pelo site da ${siteConfig.name} e quero fazer um pedido.`
+);
+
+export const whatsappLink = `https://wa.me/${siteConfig.whatsapp}?text=${defaultText}`;
+
+export const mapDirectionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+  `${siteConfig.address.street}, ${siteConfig.address.city} - ${siteConfig.address.state}`
 )}`;
 
 export const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(
@@ -36,9 +48,55 @@ export function formatPrice(value: number): string {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
 
-export function buildWhatsAppOrder(itemsLabel: string, total: number): string {
-  const text = encodeURIComponent(
-    `Olá! Vim pelo site da Lucas Lanches.\nPedido: ${itemsLabel}\nTotal: ${formatPrice(total)}`
-  );
-  return `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${text}`;
+export type OrderItem = {
+  name: string;
+  qty: number;
+  price: number;
+  notes?: string;
+};
+
+/**
+ * Monta um pedido contextual para o WhatsApp.
+ * Preserva o fluxo de pedido 100% via WhatsApp já usado pelo site.
+ */
+export function buildWhatsAppOrder(
+  items: OrderItem[],
+  options: { pickup?: boolean; address?: string; notes?: string } = {}
+): string {
+  const lines: string[] = [];
+  let total = 0;
+
+  for (const item of items) {
+    total += item.qty * item.price;
+    lines.push(
+      `${item.qty}x ${item.name} — ${formatPrice(item.qty * item.price)}`
+    );
+  }
+
+  lines.push("");
+  lines.push(`*Total: ${formatPrice(total)}*`);
+
+  const allNotes = items.map((i) => i.notes).filter((n) => n && n.trim());
+  if (allNotes.length) {
+    lines.push("");
+    lines.push(`Observações:`);
+    allNotes.forEach((n) => lines.push(`- ${n}`));
+  }
+  if (options.notes && options.notes.trim()) {
+    lines.push("");
+    lines.push(`Observação do pedido:\n${options.notes.trim()}`);
+  }
+
+  const forma = options.pickup ? "Retirada" : "Entrega";
+  lines.push("");
+  lines.push(`Forma: ${forma}`);
+  if (!options.pickup) {
+    lines.push(`Endereço: (informar na conversa)`);
+  }
+
+  const mensagem = `Olá! Vim pelo site da ${
+    siteConfig.name
+  } e gostaria de fazer este pedido:\n\n${lines.join("\n")}`;
+
+  return `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }

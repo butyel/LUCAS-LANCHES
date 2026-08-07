@@ -5,28 +5,32 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
-import { whatsappLink } from "@/lib/site";
+import { whatsappLink, siteConfig } from "@/lib/site";
+import { IconClose, IconMenu, IconWhatsApp, IconTruck } from "./icons";
 
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/cardapio", label: "Cardapio" },
+  { href: "/", label: "Início" },
+  { href: "/cardapio", label: "Cardápio" },
+  { href: "/cupons", label: "Ofertas" },
   { href: "/blog", label: "Blog" },
-  { href: "/sobre-nos", label: "Sobre Nos" },
-];
-
-const tickerItems = [
-  "Entrega gratis em pedidos acima de R$ 79,00",
-  "Funcionamento: Ter a Dom, das 18h as 23h",
-  "Pedidos pelo WhatsApp em ate 45 minutos",
+  { href: "/sobre-nos", label: "Sobre" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -38,25 +42,41 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="relative h-9 overflow-hidden bg-brand-green text-center text-xs font-semibold text-white sm:text-sm">
-        {tickerItems.map((item) => (
-          <span
-            key={item}
-            className="ticker-item absolute inset-0 flex items-center justify-center px-4"
-            aria-hidden="true"
-          >
-            {item}
-          </span>
-        ))}
-        <span className="sr-only">{tickerItems.join(". ")}</span>
+      <div className="relative overflow-hidden bg-brand-ink text-center text-white">
+        <div className="marquee-track py-2 text-[11px] font-semibold uppercase tracking-[0.18em] sm:text-xs">
+          {[0, 1].map((dup) => (
+            <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
+              <span className="mx-4 inline-flex items-center gap-2">
+                <IconTruck className="h-4 w-4 text-brand-orange" />
+                Entrega grátis acima de R$ {siteConfig.deliveryFreeAbove}
+              </span>
+              <span className="mx-4">·</span>
+              <span className="mx-4">Ter a Dom, das 18h às 23h</span>
+              <span className="mx-4">·</span>
+              <span className="mx-4">Pedido pelo WhatsApp</span>
+            </div>
+          ))}
+        </div>
       </div>
 
-      <div className="bg-white/95 shadow-sm backdrop-blur">
-        <div className="container-site flex h-16 items-center justify-between gap-4 sm:h-20">
-          <Logo />
+      <div
+        className={cn(
+          "transition-all duration-300",
+          scrolled
+            ? "bg-white/95 shadow-header backdrop-blur"
+            : "bg-brand-cream/90 backdrop-blur"
+        )}
+      >
+        <div
+          className={cn(
+            "container-site flex items-center justify-between gap-4 transition-all duration-300",
+            scrolled ? "h-16" : "h-20"
+          )}
+        >
+          <Logo scrolled={scrolled} />
 
           <nav aria-label="Menu principal" className="hidden lg:block">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-8">
               {navLinks.map((link) => {
                 const active =
                   link.href === "/"
@@ -68,9 +88,9 @@ export default function Header() {
                       href={link.href}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "relative font-block text-lg uppercase tracking-wide text-brand-ink transition-colors hover:text-brand-red focus-visible:outline-2 focus-visible:outline-brand-red",
+                        "relative text-[15px] font-bold tracking-wide text-brand-ink/80 transition-colors hover:text-brand-red",
                         active &&
-                          "font-bold text-brand-red after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-brand-red"
+                          "text-brand-red after:absolute after:-bottom-1.5 after:left-0 after:h-1 after:w-full after:rounded-full after:bg-brand-red"
                       )}
                     >
                       {link.label}
@@ -81,15 +101,17 @@ export default function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-red hidden px-5 py-2.5 text-sm sm:inline-flex"
+              className="btn-red px-5 py-2.5 text-sm sm:px-6"
               aria-label="Fazer pedido pelo WhatsApp em nova aba"
             >
-              Delivery
+              <IconWhatsApp className="h-5 w-5" />
+              <span className="hidden sm:inline">Pedir agora</span>
+              <span className="sm:hidden">Pedir</span>
             </a>
 
             <button
@@ -98,31 +120,13 @@ export default function Header() {
               aria-expanded={menuOpen}
               aria-controls="menu-mobile"
               aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
-              className="flex h-11 w-11 items-center justify-center rounded-md border border-brand-gray text-brand-green lg:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-white text-brand-ink transition-colors hover:bg-brand-sand lg:hidden"
             >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                {menuOpen ? (
-                  <>
-                    <path d="M6 6l12 12" />
-                    <path d="M18 6L6 18" />
-                  </>
-                ) : (
-                  <>
-                    <path d="M4 7h16" />
-                    <path d="M4 12h16" />
-                    <path d="M4 17h16" />
-                  </>
-                )}
-              </svg>
+              {menuOpen ? (
+                <IconClose className="h-5 w-5" />
+              ) : (
+                <IconMenu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -146,63 +150,60 @@ export default function Header() {
         <aside
           role="dialog"
           aria-modal="true"
-          aria-label="Menu de navegacao"
+          aria-label="Menu de navegação"
           className={cn(
-            "absolute right-0 top-0 flex h-full w-72 flex-col bg-white shadow-2xl transition-transform duration-300",
+            "absolute right-0 top-0 flex h-full w-80 max-w-[85vw] flex-col bg-white shadow-2xl transition-transform duration-300",
             menuOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
-          <div className="flex items-center justify-between border-b border-brand-gray px-5 py-4">
-            <Logo className="scale-90 origin-left" />
+          <div className="flex items-center justify-between border-b border-brand-line px-5 py-4">
+            <Logo />
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
               aria-label="Fechar menu"
-              className="flex h-10 w-10 items-center justify-center rounded-md text-brand-green"
+              className="flex h-11 w-11 items-center justify-center rounded-full text-brand-ink hover:bg-brand-sand"
             >
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                <path d="M6 6l12 12" />
-                <path d="M18 6L6 18" />
-              </svg>
+              <IconClose className="h-5 w-5" />
             </button>
           </div>
-          <ul className="flex-1 overflow-y-auto px-5 py-6">
-            {navLinks.map((link) => (
-              <li key={link.href} className="mb-1">
-                <Link
-                  href={link.href}
-                  aria-current={
-                    link.href === "/" && pathname === "/" ? "page" : undefined
-                  }
-                  className={cn(
-                    "block rounded-lg px-3 py-3 font-block text-xl uppercase tracking-wide text-brand-ink transition-colors hover:bg-brand-gray hover:text-brand-red",
-                    (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)) &&
-                      "text-brand-red font-bold"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <div className="border-t border-brand-gray p-5">
+          <nav aria-label="Menu móvel" className="flex-1 overflow-y-auto px-5 py-5">
+            <ul>
+              {navLinks.map((link) => (
+                <li key={link.href} className="mb-1">
+                  <Link
+                    href={link.href}
+                    aria-current={
+                      link.href === "/" && pathname === "/" ? "page" : undefined
+                    }
+                    className={cn(
+                      "block rounded-xl px-4 py-3 text-xl font-bold uppercase tracking-wide text-brand-ink transition-colors hover:bg-brand-sand hover:text-brand-red",
+                      (link.href === "/"
+                        ? pathname === "/"
+                        : pathname.startsWith(link.href)) && "text-brand-red"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="space-y-2 border-t border-brand-line p-5">
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-red w-full py-3"
-              aria-label="Fazer pedido pelo WhatsApp em nova aba"
+              className="btn-red w-full py-3 text-base"
+              aria-label="Pedir pelo WhatsApp em nova aba"
             >
-              Delivery no WhatsApp
+              <IconWhatsApp className="h-5 w-5" /> Pedir agora
+            </a>
+            <a
+              href={`tel:+${siteConfig.whatsapp}`}
+              className="btn-outline w-full py-3 text-base"
+            >
+              Ligar: {siteConfig.whatsappDisplay}
             </a>
           </div>
         </aside>

@@ -6,8 +6,9 @@ import { formatarData } from "@/components/Blog";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Dicas, receitas e a historia da Lucas Lanches.",
+  title: "Blog da Lucas Lanches | Dicas e Receitas",
+  description:
+    "Dicas, receitas e a história da Lucas Lanches, hamburgueria artesanal em Presidente Epitácio - SP.",
 };
 
 export default function BlogPage() {

@@ -5,75 +5,87 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
   }
   body {
-    @apply bg-white text-brand-ink font-block antialiased;
+    @apply bg-brand-cream font-body text-brand-ink antialiased;
   }
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     @apply font-block;
+  }
+  :focus-visible {
+    outline: 2px solid var(--tw-ring-color, #e8291b);
+    outline-offset: 2px;
   }
 }
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
   }
-  .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-block font-bold uppercase tracking-wide transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2;
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em] text-brand-red;
   }
-  .btn-red {
-    @apply btn bg-brand-red text-white hover:bg-brand-redDark active:scale-95;
-  }
-  .btn-green-outline {
-    @apply btn border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white active:scale-95;
-  }
-  .btn-white {
-    @apply btn bg-white text-brand-green hover:bg-brand-gray active:scale-95;
+  .section-kicker {
+    @apply font-block text-sm uppercase tracking-[0.3em] text-brand-red;
   }
   .section-title {
-    @apply mb-8 text-3xl font-bold uppercase tracking-tight text-brand-green sm:text-4xl;
+    @apply text-3xl font-bold uppercase leading-[0.95] tracking-tight text-brand-ink sm:text-4xl lg:text-5xl;
+  }
+  .section-title--light {
+    @apply text-white;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-block text-lg font-bold uppercase tracking-wide transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2;
+  }
+  .btn-red {
+    @apply btn bg-brand-red text-white shadow-cta hover:bg-brand-redDark hover:-translate-y-0.5 active:translate-y-0 active:scale-95;
+  }
+  .btn-dark {
+    @apply btn bg-brand-ink text-white hover:bg-black hover:-translate-y-0.5 active:scale-95;
+  }
+  .btn-green {
+    @apply btn bg-brand-green text-white hover:bg-brand-greenDark hover:-translate-y-0.5 active:scale-95;
+  }
+  .btn-outline {
+    @apply btn border-2 border-brand-ink text-brand-ink hover:bg-brand-ink hover:text-white active:scale-95;
+  }
+  .btn-outline-light {
+    @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-brand-ink active:scale-95;
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#1fa855] text-white hover:bg-[#178d46] hover:-translate-y-0.5 active:scale-95;
+  }
+  .chip {
+    @apply shrink-0 rounded-full border-2 px-5 py-2 font-block text-base uppercase tracking-wide transition-colors focus-visible:outline-2 focus-visible:outline-brand-red;
+  }
+  .price {
+    @apply font-block text-2xl leading-none tracking-tight text-brand-red;
+  }
+  .price-lg {
+    @apply font-block text-3xl leading-none tracking-tight text-brand-red;
   }
 }
 
-@keyframes pulse-ring {
+/* Marquee - ribbon promocional */
+@keyframes marquee {
   0% {
-    transform: scale(1);
-    opacity: 0.6;
+    transform: translateX(0);
   }
-  80%,
   100% {
-    transform: scale(1.6);
-    opacity: 0;
+    transform: translateX(-50%);
   }
 }
-
-.animate-pulse-ring {
-  animation: pulse-ring 1.5s ease-out infinite;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
 }
 
-@keyframes ticker {
-  0%,
-  20% {
-    opacity: 1;
-  }
-  25%,
-  100% {
-    opacity: 0;
-  }
-}
-
-.ticker-item {
-  animation: ticker 9s ease-in-out infinite;
-}
-.ticker-item:nth-child(2) {
-  animation-delay: 3s;
-}
-.ticker-item:nth-child(3) {
-  animation-delay: 6s;
-}
-
+/* No scro+nav horizontal sem scrollbar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -82,10 +94,23 @@
   scrollbar-width: none;
 }
 
+/* Recorte de cupom */
 .scissor-dash {
   background-image: repeating-linear-gradient(
     90deg,
     #2f4a1e 0 8px,
     transparent 8px 16px
   );
+}
+
+/* Reduz movimento quando o usuário preferir */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,17 +1,19 @@
 import { siteConfig } from "@/lib/site";
+import cardapio from "@/data/cardapio.json";
 
 /**
- * Dados estruturados JSON-LD do tipo Restaurant, gerados automaticamente
- * a partir de src/lib/site.ts.
+ * Dados estruturados JSON-LD gerados a partir de src/lib/site.ts e do
+ * cardápio real (src/data/cardapio.json). Nenhum dado é inventado.
  */
 export default function RestaurantJsonLd() {
-  const jsonLd = {
+  const restaurant = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     name: siteConfig.name,
-    image: `${siteConfig.url}/images/og.svg`,
+    image: [`${siteConfig.url}/images/og.svg`],
+    logo: `${siteConfig.url}/icon.svg`,
     url: siteConfig.url,
-    telephone: siteConfig.phoneDisplay,
+    telephone: `+55${siteConfig.whatsapp}`,
     priceRange: "$$",
     servesCuisine: "Hamburgueria",
     address: {
@@ -33,17 +35,68 @@ export default function RestaurantJsonLd() {
           "Saturday",
           "Sunday",
         ],
-        opens: "18:00",
-        closes: "23:00",
+        opens: siteConfig.opens,
+        closes: siteConfig.closes,
       },
     ],
-    sameAs: [siteConfig.social.instagram, siteConfig.social.facebook],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: siteConfig.rating,
+      reviewCount: siteConfig.ratingCount,
+      bestRating: 5,
+    },
+    sameAs: [
+      siteConfig.social.instagram,
+      siteConfig.social.facebook,
+      `https://wa.me/${siteConfig.whatsapp}`,
+    ],
   };
 
+  const menu = {
+    "@context": "https://schema.org",
+    "@type": "Menu",
+    name: `Cardápio ${siteConfig.name}`,
+    url: `${siteConfig.url}/cardapio`,
+    hasMenuSection: [
+      ...new Set(cardapio.map((item) => item.categoriaNome)),
+    ].map((categoria) => ({
+      "@type": "MenuSection",
+      name: categoria,
+      hasMenuItem: cardapio
+        .filter((item) => item.categoriaNome === categoria)
+        .map((item) => ({
+          "@type": "MenuItem",
+          name: item.nome,
+          description: item.descricao,
+          offers: {
+            "@type": "Offer",
+            price: item.precoPromo ?? item.preco,
+            priceCurrency: "BRL",
+            availability: "https://schema.org/InStock",
+          },
+        })),
+    })),
+  };
+
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    inLanguage: "pt-BR",
+  };
+
+  const items = [restaurant, menu, website];
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <>
+      {items.map((data, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+        />
+      ))}
+    </>
   );
 }

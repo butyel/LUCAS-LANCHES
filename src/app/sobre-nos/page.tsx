@@ -5,8 +5,9 @@ import Avaliacoes from "@/components/Avaliacoes";
 import { siteConfig, whatsappLink } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Sobre Nos",
-  description: "Conheca a historia da Lucas Lanches, nossa loja, endereco e horario de funcionamento.",
+  title: "Sobre o Lucas Lanches | Hamburgueria em Presidente Epitácio",
+  description:
+    "Conheça a história da Lucas Lanches: hamburgueria artesanal em Presidente Epitácio - SP. Local, horário de funcionamento, delivery e retirada pelo WhatsApp.",
 };
 
 export default function SobreNosPage() {
