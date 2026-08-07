@@ -70,7 +70,7 @@ export default function RestaurantJsonLd() {
           description: item.descricao,
           offers: {
             "@type": "Offer",
-            price: item.precoPromo ?? item.preco,
+            price: item.options?.length ? item.options[0].preco : item.preco,
             priceCurrency: "BRL",
             availability: "https://schema.org/InStock",
           },

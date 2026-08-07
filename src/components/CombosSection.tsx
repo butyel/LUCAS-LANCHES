@@ -50,16 +50,7 @@ export default function CombosSection() {
                   {combo.descricao}
                 </p>
                 <div className="mt-5 flex items-center justify-between gap-3">
-                  <div className="flex items-baseline gap-2">
-                    {combo.precoPromo && (
-                      <span className="text-sm text-brand-ink/45 line-through">
-                        {formatPrice(combo.preco)}
-                      </span>
-                    )}
-                    <span className="price-lg">
-                      {formatPrice(combo.precoPromo ?? combo.preco)}
-                    </span>
-                  </div>
+                  <span className="price-lg">{formatPrice(combo.preco ?? 0)}</span>
                   <button
                     type="button"
                     onClick={() => setSelected(combo)}

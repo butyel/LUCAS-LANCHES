@@ -13,7 +13,7 @@ const faqs = [
   },
   {
     q: "O Lucas Lanches faz delivery?",
-    a: `Sim. Entregamos em ${siteConfig.region} com entrega grátis a partir das condições de cada oferta. Na confirmação do pedido pelo WhatsApp, combinamos o endereço e o tempo de entrega.`,
+    a: `Sim. Entregamos em ${siteConfig.region}. A taxa de entrega é confirmada no momento do pedido pelo WhatsApp, junto com o endereço e o tempo de entrega.`,
   },
   {
     q: "Posso retirar meu pedido?",

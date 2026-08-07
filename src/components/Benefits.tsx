@@ -9,7 +9,7 @@ const benefits = [
   {
     icon: IconTruck,
     title: "Entrega rápida",
-    text: "Leva o seu lanche quente pela cidade, com entrega grátis a partir dos destaques.",
+    text: "Leva o seu lanche quente pela cidade. Taxa de entrega confirmada na hora do pedido.",
   },
   {
     icon: IconWhatsApp,

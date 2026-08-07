@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { MenuItem } from "@/lib/menu";
-import { getBadges } from "@/lib/menu";
+import { basePrice, maxPrice } from "@/lib/menu";
 import { formatPrice } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { IconPlus } from "./icons";
@@ -13,10 +13,33 @@ type ProductCardProps = {
 };
 
 const badgeStyle: Record<string, string> = {
-  OFERTA: "bg-brand-orange text-white",
   COMBO: "bg-brand-ink text-white",
-  "MAIS PEDIDO": "bg-brand-green text-white",
+  "TOP SEVEN": "bg-brand-orange text-white",
+  DESTAQUE: "bg-brand-green text-white",
 };
+
+function getBadge(item: MenuItem): { label: string; cls: string } | null {
+  if (item.categoria === "combos") return { label: "Combo", cls: badgeStyle.COMBO };
+  if (item.categoria === "top-seven") return { label: "Top Seven", cls: badgeStyle["TOP SEVEN"] };
+  if (item.destaque) return { label: "Destaque", cls: badgeStyle.DESTAQUE };
+  return null;
+}
+
+function PriceDisplay({ item }: { item: MenuItem }) {
+  if (item.options?.length) {
+    const min = basePrice(item);
+    const max = maxPrice(item);
+    if (max > min) {
+      return (
+        <span className="price">
+          {formatPrice(min)} - {formatPrice(max)}
+        </span>
+      );
+    }
+    return <span className="price">{formatPrice(min)}</span>;
+  }
+  return <span className="price">{formatPrice(basePrice(item))}</span>;
+}
 
 export default function ProductCard({
   item,
@@ -24,8 +47,7 @@ export default function ProductCard({
   className,
   eager,
 }: ProductCardProps) {
-  const badges = getBadges(item);
-  const price = item.precoPromo ?? item.preco;
+  const badge = getBadge(item);
 
   return (
     <article
@@ -40,14 +62,14 @@ export default function ProductCard({
         aria-label={`Ver ${item.nome}`}
         className="relative block aspect-[4/3] w-full overflow-hidden bg-brand-sand"
       >
-        {badges.length > 0 && (
+        {badge && (
           <span
             className={cn(
               "absolute left-3 top-3 z-10 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white",
-              badgeStyle[badges[0]]
+              badge.cls
             )}
           >
-            {badges[0]}
+            {badge.label}
           </span>
         )}
         <Image
@@ -71,14 +93,7 @@ export default function ProductCard({
         </p>
 
         <div className="mt-4 flex items-center justify-between gap-3 border-t border-brand-line pt-4">
-          <div className="flex items-baseline gap-2">
-            {item.precoPromo && (
-              <span className="text-sm text-brand-ink/45 line-through">
-                {formatPrice(item.preco)}
-              </span>
-            )}
-            <span className="price">{formatPrice(price)}</span>
-          </div>
+          <PriceDisplay item={item} />
           <button
             type="button"
             onClick={() => onSelect(item)}

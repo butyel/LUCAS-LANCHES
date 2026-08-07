@@ -1,112 +1,549 @@
 [
   {
-    "id": "burger-classico",
-    "categoria": "burgers",
-    "categoriaNome": "Burgers",
-    "nome": "Classic Lucas",
-    "descricao": "Pão brioche, burger 160g, queijo prato, alface, tomate e molho da casa.",
-    "preco": 26.9,
-    "precoPromo": null,
-    "imagem": "/images/burgers/classic-lucas.svg",
-    "destaque": true
-  },
-  {
-    "id": "burger-smash",
-    "categoria": "burgers",
-    "categoriaNome": "Burgers",
-    "nome": "Smash Duplo",
-    "descricao": "Dois smash burgers 90g, cheddar cremoso, cebola caramelizada e maionese defumada.",
-    "preco": 29.9,
-    "precoPromo": null,
-    "imagem": "/images/burgers/smash-duplo.svg",
-    "destaque": true
-  },
-  {
-    "id": "burger-bacon",
-    "categoria": "burgers",
-    "categoriaNome": "Burgers",
-    "nome": "Bacon Explosion",
-    "descricao": "Burger 180g, muito bacon, cheddar e molho barbecue de mel.",
-    "preco": 32.9,
-    "precoPromo": 27.9,
-    "imagem": "/images/burgers/bacon-explosion.svg",
-    "destaque": true
-  },
-  {
-    "id": "burger-veggie",
-    "categoria": "burgers",
-    "categoriaNome": "Burgers",
-    "nome": "Veggie Garden",
-    "descricao": "Burger de grão-de-bico, queijo derretido, rúcula e tomate confit.",
-    "preco": 28.9,
-    "precoPromo": null,
-    "imagem": "/images/burgers/veggie-garden.svg",
+    "id": "hot-dog-simples",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "Hot Dog Simples",
+    "descricao": "2 salsichas, milho, batata palha, salada e molhos.",
+    "preco": 12,
+    "imagem": "/images/menu-placeholder.svg",
     "destaque": false
   },
   {
-    "id": "combo-duplo",
+    "id": "hot-dog-especial",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "Hot Dog Especial",
+    "descricao": "2 salsichas, milho, batata palha, catupiry, bacon, calabresa e salada.",
+    "preco": 19,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "big-salada",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "Big Salada",
+    "descricao": "2 hambúrgueres, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "cheddar-burguer",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "Cheddar Burguer",
+    "descricao": "2 hambúrgueres, cheddar e mussarela.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "especial-cheddar",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "Especial Cheddar",
+    "descricao": "2 hambúrgueres, cheddar, mussarela e provolone.",
+    "preco": 22,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-burguer",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Burguer",
+    "descricao": "1 hambúrguer, presunto e mussarela.",
+    "preco": 13,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-salada",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Salada",
+    "descricao": "1 hambúrguer, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-bacon",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Bacon",
+    "descricao": "1 hambúrguer, bacon, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 18,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-bacon-calabresa",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Bacon Calabresa",
+    "descricao": "1 hambúrguer, bacon, calabresa, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-calabresa",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Calabresa",
+    "descricao": "1 hambúrguer, calabresa, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 18,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-egg",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Egg",
+    "descricao": "1 hambúrguer, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 16,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-frango",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Frango",
+    "descricao": "2 filés de frango, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 16,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-frango-bacon",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Frango Bacon",
+    "descricao": "2 filés de frango, bacon, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-frango-calabresa",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Frango Calabresa",
+    "descricao": "2 filés de frango, calabresa, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-frango-egg",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Frango Egg",
+    "descricao": "2 filés de frango, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 18,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-tudo",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Tudo",
+    "descricao": "1 hambúrguer, 1 salsicha, bacon, calabresa, 1 filé de frango, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 26,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-bagunca",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Bagunça",
+    "descricao": "1 hambúrguer, 1 salsicha, bacon, calabresa, 1 ovo frito, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 22,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-file",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Filé",
+    "descricao": "Filé bovino, mussarela e salada.",
+    "preco": 27,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "x-file-acebolado",
+    "categoria": "lanches",
+    "categoriaNome": "Lanches",
+    "nome": "X-Filé Acebolado",
+    "descricao": "Filé bovino, cebola, mussarela e salada.",
+    "preco": 28,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+
+  {
+    "id": "hot-dog-frango",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog Frango",
+    "descricao": "2 salsichas, 1 filé de frango, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "hot-dog-bacon",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog Bacon",
+    "descricao": "2 salsichas, bacon, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "hot-dog-calabresa",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog Calabresa",
+    "descricao": "2 salsichas, calabresa, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "hot-dog-presunto-mussarela",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog c/ Presunto e Mussarela",
+    "descricao": "2 salsichas, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "hot-dog-egg",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog Egg",
+    "descricao": "2 salsichas, 1 ovo, milho, batata palha e salada.",
+    "preco": 15,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "hot-dog-simples-especial",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Hot Dog Simples (Especial)",
+    "descricao": "2 salsichas, calabresa, bacon, frango, catupiry, milho, batata palha e salada.",
+    "preco": 19,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "especial-egg",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Especial Egg",
+    "descricao": "2 salsichas, bacon, calabresa, 1 ovo, catupiry, milho, batata palha e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "frango-egg-supremo",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Frango Egg Supremo",
+    "descricao": "2 salsichas, 1 ovo, 1 filé de frango, catupiry, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 19,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "frango-calabresa-especial",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Frango Calabresa (Especial)",
+    "descricao": "1 filé de frango, 1 ovo, calabresa, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 19,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "lucca-especial",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Lucca Especial",
+    "descricao": "1 ovo, calabresa, bacon, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 18,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "frango-especial",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Frango Especial",
+    "descricao": "2 salsichas, bacon, calabresa, 1 filé de frango, catupiry, presunto, mussarela e salada.",
+    "preco": 22,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "egg-duplo-especial",
+    "categoria": "especiais",
+    "categoriaNome": "Hot Dogs e Especiais",
+    "nome": "Egg Duplo Especial",
+    "descricao": "2 hambúrgueres, 2 ovos, 1 salsicha, 1 filé de frango, presunto, mussarela e salada.",
+    "preco": 28,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+
+  {
+    "id": "x-calabresa-egg",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "X-Calabresa Egg",
+    "descricao": "1 hambúrguer, calabresa, 1 ovo, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "lucca-supremo",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "Lucca Supremo",
+    "descricao": "1 hambúrguer, 1 filé de frango, calabresa, catupiry, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "x-lucca",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "X-Lucca",
+    "descricao": "2 salsichas, calabresa, 1 ovo frito, presunto, mussarela, milho, batata palha e salada.",
+    "preco": 19,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "x-egg-duplo",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "X-Egg Duplo",
+    "descricao": "2 hambúrgueres, 2 ovos fritos, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 23,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "x-bacon-egg",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "X-Bacon Egg",
+    "descricao": "1 hambúrguer, bacon, 1 ovo, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 20,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "x-tudo-duo",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "X Tudo Duo",
+    "descricao": "1 hambúrguer, 1 salsicha, dobro de bacon, dobro de calabresa, 2 filés de frango, 2 ovos fritos, milho, batata palha, presunto, mussarela e salada.",
+    "preco": 33,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+  {
+    "id": "mega-duo",
+    "categoria": "top-seven",
+    "categoriaNome": "Top Seven",
+    "nome": "Mega Duo",
+    "descricao": "2 hambúrgueres, 2 salsichas, bacon, calabresa, 2 filés de frango, 2 ovos fritos, 2 fatias de presunto, 2 fatias de mussarela, milho, batata palha e salada.",
+    "preco": 45,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": true
+  },
+
+  {
+    "id": "combo-frango",
     "categoria": "combos",
     "categoriaNome": "Combos",
-    "nome": "Combo Duplo Lucas",
-    "descricao": "2 burgers Classic, 1 batata média e 2 refrigerantes lata.",
-    "preco": 59.9,
-    "precoPromo": 49.9,
-    "imagem": "/images/combos/combo-duplo.svg",
-    "destaque": true
+    "nome": "Combo Frango",
+    "descricao": "1 X-Frango + 1 Batata PP + 1 Coca lata.",
+    "preco": 23,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
   },
   {
-    "id": "combo-familia",
+    "id": "combo-simples",
     "categoria": "combos",
     "categoriaNome": "Combos",
-    "nome": "Combo Família",
-    "descricao": "4 burgers, 2 porções grandes e 4 refrigerantes.",
-    "preco": 119.9,
-    "precoPromo": 99.9,
-    "imagem": "/images/combos/combo-familia.svg",
-    "destaque": true
-  },
-  {
-    "id": "porcao-fritas",
-    "categoria": "porcoes",
-    "categoriaNome": "Porções",
-    "nome": "Batata Frita",
-    "descricao": "Porção de batata frita crocante com sal e orégano.",
-    "preco": 16.9,
-    "precoPromo": null,
-    "imagem": "/images/porcoes/fritas.svg",
+    "nome": "Combo Simples",
+    "descricao": "1 Simples + 1 Batata PP + 1 refrigerante 200 ml.",
+    "preco": 17,
+    "imagem": "/images/menu-placeholder.svg",
     "destaque": false
   },
   {
-    "id": "porcao-cheddar",
-    "categoria": "porcoes",
-    "categoriaNome": "Porções",
-    "nome": "Batata com Cheddar e Bacon",
-    "descricao": "Batata frita coberta com cheddar cremoso e pedaços de bacon.",
-    "preco": 24.9,
-    "precoPromo": 21.9,
-    "imagem": "/images/porcoes/cheddar-bacon.svg",
-    "destaque": true
-  },
-  {
-    "id": "bebida-cola",
-    "categoria": "bebidas",
-    "categoriaNome": "Bebidas",
-    "nome": "Refrigerante Lata 350ml",
-    "descricao": "Coca-cola, Guaraná ou Fanta, bem gelado.",
-    "preco": 6.9,
-    "precoPromo": null,
-    "imagem": "/images/bebidas/refri.svg",
+    "id": "combo-calabresa",
+    "categoria": "combos",
+    "categoriaNome": "Combos",
+    "nome": "Combo Calabresa",
+    "descricao": "2 X-Calabresa + 1 Batata P + 1 Coca 600 ml.",
+    "preco": 50,
+    "imagem": "/images/menu-placeholder.svg",
     "destaque": false
   },
   {
-    "id": "sobremesa-milkshake",
-    "categoria": "sobremesas",
-    "categoriaNome": "Sobremesas",
-    "nome": "Milkshake de Chocolate",
-    "descricao": "Milkshake cremoso com calda de chocolate e chantilly.",
-    "preco": 18.9,
-    "precoPromo": null,
-    "imagem": "/images/sobremesas/milkshake.svg",
+    "id": "combo-salada",
+    "categoria": "combos",
+    "categoriaNome": "Combos",
+    "nome": "Combo Salada",
+    "descricao": "2 X-Salada + 1 Batata M + 1 Coca 600 ml.",
+    "preco": 48,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+
+  {
+    "id": "batata-pp",
+    "categoria": "batatas",
+    "categoriaNome": "Batatas",
+    "nome": "Batata PP",
+    "descricao": "Porção de batata frita (130 g).",
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false,
+    "options": [
+      { "nome": "Tradicional", "preco": 6 },
+      { "nome": "Com cheddar e bacon", "preco": 11 }
+    ]
+  },
+  {
+    "id": "batata-p",
+    "categoria": "batatas",
+    "categoriaNome": "Batatas",
+    "nome": "Batata P",
+    "descricao": "Porção de batata frita (200 g).",
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false,
+    "options": [
+      { "nome": "Tradicional", "preco": 12 },
+      { "nome": "Com cheddar e bacon", "preco": 17 }
+    ]
+  },
+  {
+    "id": "batata-m",
+    "categoria": "batatas",
+    "categoriaNome": "Batatas",
+    "nome": "Batata M",
+    "descricao": "Porção de batata frita (270 g).",
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false,
+    "options": [
+      { "nome": "Tradicional", "preco": 15 },
+      { "nome": "Com cheddar e bacon", "preco": 20 }
+    ]
+  },
+  {
+    "id": "batata-g",
+    "categoria": "batatas",
+    "categoriaNome": "Batatas",
+    "nome": "Batata G",
+    "descricao": "Porção de batata frita (400 g).",
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false,
+    "options": [
+      { "nome": "Tradicional", "preco": 22 },
+      { "nome": "Com cheddar e bacon", "preco": 27 }
+    ]
+  },
+
+  {
+    "id": "coca-cola",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Coca-Cola",
+    "descricao": "Coca-Cola bem gelada.",
+    "preco": 14,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "fanta",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Fanta",
+    "descricao": "Fanta gelada.",
+    "preco": 13,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "guarana-antarctica",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Guaraná Antarctica",
+    "descricao": "Guaraná Antarctica gelado.",
+    "preco": 13,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "sprite",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Sprite",
+    "descricao": "Sprite gelada.",
+    "preco": 13,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "funada",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Funada",
+    "descricao": "Funada gelada.",
+    "preco": 8,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "lata-sabores",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Lata Sabores",
+    "descricao": "Refrigerante lata, sabores variados.",
+    "preco": 6,
+    "imagem": "/images/menu-placeholder.svg",
+    "destaque": false
+  },
+  {
+    "id": "refrigerante-600",
+    "categoria": "refrigerantes",
+    "categoriaNome": "Refrigerantes",
+    "nome": "Refrigerante 600 ml",
+    "descricao": "Refrigerante de 600 ml.",
+    "preco": 8,
+    "imagem": "/images/menu-placeholder.svg",
     "destaque": false
   }
 ]

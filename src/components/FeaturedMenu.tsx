@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { featured } from "@/lib/menu";
+import { topSeven } from "@/lib/menu";
 import type { MenuItem } from "@/lib/menu";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
@@ -14,19 +14,20 @@ export default function FeaturedMenu() {
   return (
     <section
       id="mais-pedidos"
-      aria-labelledby="mais-pedidos-title"
+      aria-labelledby="more-title"
       className="bg-white py-16 sm:py-20"
     >
       <div className="container-site">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="section-kicker">Favoritos da casa</p>
-            <h2
-              id="mais-pedidos-title"
-              className="section-title mt-1"
-            >
-              Os mais pedidos
+            <p className="section-kicker">Os favoritos da casa</p>
+            <h2 id="mais-pedidos-title" className="section-title mt-1">
+              Top Seven do Lucas Lanches
             </h2>
+            <p className="mt-2 max-w-xl text-brand-ink/70">
+              Os sete lanches mais pedidos pelos nossos clientes em{" "}
+              Presidente Epitácio.
+            </p>
           </div>
           <Link
             href="/cardapio"
@@ -39,7 +40,7 @@ export default function FeaturedMenu() {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((item, i) => (
+          {topSeven.map((item, i) => (
             <ProductCard
               key={item.id}
               item={item}

@@ -1,42 +1,44 @@
 "use client";
 
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { cardapio, categories } from "@/lib/menu";
-import type { MenuItem } from "@/lib/menu";
+import type { MenuItem, CategoryId } from "@/lib/menu";
 import ProductCard from "./ProductCard";
 import ProductModal from "./ProductModal";
 import { cn } from "@/lib/utils";
 import { IconSearch } from "./icons";
 
-type Categoria = MenuItem["categoriaNome"];
+type Filter = CategoryId | "Todos";
 
 export default function MenuBrowser() {
   const [query, setQuery] = useState("");
-  const [categoria, setCategoria] = useState<Categoria | "Todos">("Todos");
+  const [categoria, setCategoria] = useState<Filter>("Todos");
   const [selected, setSelected] = useState<MenuItem | null>(null);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     if (!hash) return;
-    const match = cardapio.find(
-      (i) => i.categoriaNome.toLowerCase() === hash.toLowerCase()
-    );
-    if (match) setCategoria(match.categoriaNome as Categoria);
+    const match = categories.find((c) => c.id === hash);
+    if (match) setCategoria(match.id);
   }, []);
 
-  const tabs: Array<Categoria | "Todos"> = ["Todos", ...categories];
+  const tabs: Filter[] = ["Todos", ...categories.map((c) => c.id)];
 
   const itens = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return cardapio.filter((item) => {
-      const inCat = categoria === "Todos" || item.categoriaNome === categoria;
+      const inCat = categoria === "Todos" || item.categoria === categoria;
       const inQuery =
         !needle ||
         item.nome.toLowerCase().includes(needle) ||
-        item.descricao.toLowerCase().includes(needle);
+        item.descricao.toLowerCase().includes(needle) ||
+        item.categoriaNome.toLowerCase().includes(needle);
       return inCat && inQuery;
     });
   }, [query, categoria]);
+
+  const label = (id: Filter) =>
+    id === "Todos" ? "Todos" : categories.find((c) => c.id === id)!.nome;
 
   return (
     <>
@@ -51,17 +53,15 @@ export default function MenuBrowser() {
               key={cat}
               type="button"
               role="tab"
-              id={`cat-${cat}`}
               aria-selected={categoria === cat}
               onClick={() => setCategoria(cat)}
-              className={cn(
-                "chip",
+              className={
                 categoria === cat
-                  ? "border-brand-red bg-brand-red text-white"
-                  : "border-brand-line bg-white text-brand-ink hover:border-brand-green hover:text-brand-green"
-              )}
+                  ? "chip border-brand-red bg-brand-red text-white"
+                  : "chip border-brand-line bg-white text-brand-ink hover:border-brand-green hover:text-brand-green"
+              }
             >
-              {cat}
+              {label(cat)}
             </button>
           ))}
         </div>
@@ -73,7 +73,7 @@ export default function MenuBrowser() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Buscar lanche, batata, milkshake..."
+            placeholder="Buscar bacon, frango, calabresa..."
             className="w-full rounded-full border-2 border-brand-line bg-white py-3 pl-11 pr-4 text-sm outline-none transition-colors focus:border-brand-red"
           />
         </label>
@@ -81,7 +81,7 @@ export default function MenuBrowser() {
 
       <p className="mt-4 text-sm text-brand-ink/50" aria-live="polite">
         {itens.length} {itens.length === 1 ? "item" : "itens"}{" "}
-        {categoria !== "Todos" && `em ${categoria}`}
+        {categoria !== "Todos" && `em ${label(categoria)}`}
       </p>
 
       <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -96,7 +96,7 @@ export default function MenuBrowser() {
             Nada encontrado para “{query}”
           </p>
           <p className="mt-1 text-sm text-brand-ink/60">
-            Tente buscar por outro lanche ou categoria.
+            Tente buscar por outro lanche, ingrediente ou categoria.
           </p>
         </div>
       )}

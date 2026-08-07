@@ -1,0 +1,14 @@
+[
+  { "id": "acres-hamburguer", "nome": "Hambúrguer", "preco": 6 },
+  { "id": "acres-salsicha", "nome": "Salsicha", "preco": 3 },
+  { "id": "acres-bacon", "nome": "Bacon", "preco": 4 },
+  { "id": "acres-calabresa", "nome": "Calabresa", "preco": 4 },
+  { "id": "acres-frango", "nome": "Filé de Frango", "preco": 4 },
+  { "id": "acres-ovo", "nome": "Ovo", "preco": 2 },
+  { "id": "acres-presunto", "nome": "Presunto", "preco": 3 },
+  { "id": "acres-mussarela", "nome": "Mussarela", "preco": 3 },
+  { "id": "acres-file-bovino", "nome": "Filé Bovino", "preco": 7 },
+  { "id": "acres-cheddar", "nome": "Cheddar", "preco": 3 },
+  { "id": "acres-catupiry", "nome": "Catupiry", "preco": 2 },
+  { "id": "acres-molho-verde", "nome": "Molho Verde", "preco": 1 }
+]

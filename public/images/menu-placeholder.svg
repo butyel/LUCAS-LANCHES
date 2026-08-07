@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480">
+  <rect width="640" height="480" fill="#FFF9F0"/>
+  <circle cx="320" cy="240" r="170" fill="#F4E8D8"/>
+  <g transform="translate(320 248)" fill="#E8291B">
+    <path d="M-40 -28 h80 v6 c0 22 -18 40 -40 40 s-40 -18 -40 -40 z" />
+  </g>
+  <g transform="translate(320 208)" fill="#2F4A1E">
+    <circle cx="-38" cy="-2" r="9"/>
+    <circle cx="-14" cy="-2" r="9"/>
+    <circle cx="10" cy="-2" r="9"/>
+    <circle cx="34" cy="-2" r="9"/>
+  </g>
+  <g transform="translate(320 266)" fill="#F2551C">
+    <circle cx="-34" cy="0" r="7"/>
+    <circle cx="-10" cy="0" r="7"/>
+    <circle cx="14" cy="0" r="7"/>
+    <circle cx="38" cy="0" r="7"/>
+  </g>
+  <text x="320" y="470" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" letter-spacing="4" fill="#2F4A1E">LUCAS LANCHES</text>
+</svg>

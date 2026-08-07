@@ -3,10 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import type { MenuItem } from "@/lib/menu";
-import { getBadges } from "@/lib/menu";
+import { basePrice, supportsAcrescimos } from "@/lib/menu";
+import { acrescimos } from "@/lib/menu";
 import { formatPrice, buildWhatsAppOrder } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import { IconClose, IconMinus, IconPlus, IconWhatsApp } from "./icons";
+import { IconClose, IconMinus, IconPlus, IconWhatsApp, IconCheck } from "./icons";
 
 type ProductModalProps = {
   item: MenuItem | null;
@@ -17,12 +18,16 @@ export default function ProductModal({ item, onClose }: ProductModalProps) {
   const [qty, setQty] = useState(1);
   const [notes, setNotes] = useState("");
   const [pickup, setPickup] = useState(false);
+  const [optionIndex, setOptionIndex] = useState(0);
+  const [addons, setAddons] = useState<string[]>([]);
 
   useEffect(() => {
     if (item) {
       setQty(1);
       setNotes("");
       setPickup(false);
+      setOptionIndex(0);
+      setAddons([]);
     }
   }, [item]);
 
@@ -39,19 +44,45 @@ export default function ProductModal({ item, onClose }: ProductModalProps) {
     };
   }, [item, onClose]);
 
-  const price = item ? item.precoPromo ?? item.preco : 0;
-  const total = price * qty;
-  const badges = item ? getBadges(item) : [];
+  const price = item ? (item.options ? basePrice(item) : item.preco ?? 0) : 0;
+  const variation = item?.options?.[optionIndex]?.nome;
+
+  const selectedAddons = useMemo(
+    () =>
+      addons
+        .map((id) => acrescimos.find((a) => a.id === id))
+        .filter((a) => a !== undefined),
+    [addons]
+  );
+
+  const addonsTotal = selectedAddons.reduce((s, a) => s + (a?.preco ?? 0), 0);
+  const total = (price + addonsTotal) * qty;
+  const acceptsAddons = item ? supportsAcrescimos(item) : false;
 
   const orderLink = useMemo(() => {
     if (!item) return "#";
     return buildWhatsAppOrder(
-      [{ name: item.nome, qty, price, notes: notes.trim() || undefined }],
+      [
+        {
+          name: item.nome,
+          qty,
+          price,
+          variation: item.options ? variation : undefined,
+          notes: notes.trim() || undefined,
+          addons: selectedAddons.map((a) => ({ name: a!.nome, price: a!.preco })),
+        },
+      ],
       { pickup }
     );
-  }, [item, qty, notes, pickup]);
+  }, [item, qty, price, variation, notes, selectedAddons, pickup]);
 
   if (!item) return null;
+
+  const toggleAddon = (id: string) => {
+    setAddons((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
 
   return (
     <div
@@ -83,9 +114,9 @@ export default function ProductModal({ item, onClose }: ProductModalProps) {
           >
             <IconClose className="h-5 w-5" />
           </button>
-          {badges[0] && (
+          {item.destaque && item.categoria === "top-seven" && (
             <span className="absolute left-3 top-3 rounded-full bg-brand-orange px-3 py-1 text-[11px] font-bold uppercase text-white">
-              {badges[0]}
+              Top Seven
             </span>
           )}
         </div>
@@ -102,6 +133,73 @@ export default function ProductModal({ item, onClose }: ProductModalProps) {
           <p className="mt-2 text-sm leading-relaxed text-brand-ink/70">
             {item.descricao}
           </p>
+
+          {item.options && (
+            <fieldset className="mt-5">
+              <legend className="text-xs font-bold uppercase tracking-wide text-brand-ink/60">
+                Escolha a opção
+              </legend>
+              <div className="mt-2 grid gap-2">
+                {item.options.map((opt, i) => (
+                  <button
+                    key={opt.nome}
+                    type="button"
+                    onClick={() => setOptionIndex(i)}
+                    aria-pressed={optionIndex === i}
+                    className={cn(
+                      "flex items-center justify-between rounded-xl border-2 px-4 py-3 text-sm font-bold transition-colors",
+                      optionIndex === i
+                        ? "border-brand-red bg-brand-red text-white"
+                        : "border-brand-line bg-white text-brand-ink hover:border-brand-green"
+                    )}
+                  >
+                    <span>{opt.nome}</span>
+                    <span>{formatPrice(opt.preco)}</span>
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
+          {acceptsAddons && (
+            <fieldset className="mt-5">
+              <legend className="text-xs font-bold uppercase tracking-wide text-brand-ink/60">
+                Acréscimos
+              </legend>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                {acrescimos.map((a) => {
+                  const active = addons.includes(a.id);
+                  return (
+                    <button
+                      key={a.id}
+                      type="button"
+                      onClick={() => toggleAddon(a.id)}
+                      aria-pressed={active}
+                      className={cn(
+                        "flex items-center justify-between gap-1 rounded-xl border-2 px-3 py-2.5 text-left text-[13px] font-semibold transition-colors",
+                        active
+                          ? "border-brand-green bg-brand-green text-white"
+                          : "border-brand-line bg-white text-brand-ink hover:border-brand-green"
+                      )}
+                    >
+                      <span className="flex items-center gap-2">
+                        <IconCheck
+                          className={cn(
+                            "h-3.5 w-3.5",
+                            active ? "text-white" : "text-transparent"
+                          )}
+                        />
+                        {a.nome}
+                      </span>
+                      <span className="shrink-0 text-[12px] font-bold opacity-80">
+                        +{formatPrice(a.preco)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </fieldset>
+          )}
 
           <label className="mt-5 block">
             <span className="text-xs font-bold uppercase tracking-wide text-brand-ink/60">
@@ -179,6 +277,16 @@ export default function ProductModal({ item, onClose }: ProductModalProps) {
         </div>
 
         <div className="border-t border-brand-line bg-brand-cream p-4 sm:p-5">
+          {selectedAddons.length > 0 && (
+            <ul className="mb-3 space-y-1 text-xs text-brand-ink/70">
+              {selectedAddons.map((a) => (
+                <li key={a!.id} className="flex justify-between">
+                  <span>+ {a!.nome}</span>
+                  <span>{formatPrice(a!.preco)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="mb-3 flex items-center justify-between">
             <span className="text-sm font-bold uppercase tracking-wide text-brand-ink/70">
               Total

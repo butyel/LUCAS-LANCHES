@@ -20,7 +20,6 @@ export const siteConfig = {
   hours: "Ter a Dom, das 18h às 23h",
   opens: "18:00",
   closes: "23:00",
-  deliveryFreeAbove: 79,
   currency: "R$",
   social: {
     instagram: "https://www.instagram.com/",
@@ -52,7 +51,9 @@ export type OrderItem = {
   name: string;
   qty: number;
   price: number;
+  variation?: string;
   notes?: string;
+  addons?: { name: string; price: number }[];
 };
 
 /**
@@ -67,19 +68,30 @@ export function buildWhatsAppOrder(
   let total = 0;
 
   for (const item of items) {
-    total += item.qty * item.price;
-    lines.push(
-      `${item.qty}x ${item.name} — ${formatPrice(item.qty * item.price)}`
-    );
+    const addonsTotal = (item.addons ?? []).reduce((s, a) => s + a.price, 0);
+    const unitTotal = item.price + addonsTotal;
+    const lineTotal = unitTotal * item.qty;
+    total += lineTotal;
+
+    const variation = item.variation ? ` (${item.variation})` : "";
+    lines.push(`${item.qty}x ${item.name}${variation} — ${formatPrice(lineTotal)}`);
+
+    if (item.addons?.length) {
+      for (const a of item.addons) {
+        lines.push(`  + ${a.name} (+${formatPrice(a.price)})`);
+      }
+    }
   }
 
   lines.push("");
   lines.push(`*Total: ${formatPrice(total)}*`);
 
-  const allNotes = items.map((i) => i.notes).filter((n) => n && n.trim());
+  const allNotes = items
+    .map((i) => i.notes)
+    .filter((n) => n && n.trim());
   if (allNotes.length) {
     lines.push("");
-    lines.push(`Observações:`);
+    lines.push("Observações:");
     allNotes.forEach((n) => lines.push(`- ${n}`));
   }
   if (options.notes && options.notes.trim()) {
@@ -91,7 +103,7 @@ export function buildWhatsAppOrder(
   lines.push("");
   lines.push(`Forma: ${forma}`);
   if (!options.pickup) {
-    lines.push(`Endereço: (informar na conversa)`);
+    lines.push(`Taxa de entrega: a confirmar na conversa.`);
   }
 
   const mensagem = `Olá! Vim pelo site da ${

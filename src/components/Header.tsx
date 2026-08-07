@@ -48,7 +48,7 @@ export default function Header() {
             <div key={dup} className="flex shrink-0 items-center" aria-hidden={dup === 1}>
               <span className="mx-4 inline-flex items-center gap-2">
                 <IconTruck className="h-4 w-4 text-brand-orange" />
-                Entrega grátis acima de R$ {siteConfig.deliveryFreeAbove}
+                Taxa de entrega: consulte no pedido
               </span>
               <span className="mx-4">·</span>
               <span className="mx-4">Ter a Dom, das 18h às 23h</span>
